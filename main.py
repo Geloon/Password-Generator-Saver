@@ -1,6 +1,7 @@
 from tkinter import *
 from tkinter import messagebox as mb
 from random import choice, randint, shuffle
+from PIL import Image, ImageTk
 import pyperclip as pyperclip
 import json
 
@@ -71,13 +72,15 @@ def find_password():
 
 
 # ---------------------------- UI SETUP ------------------------------- #
-window = Tk()
-window.title("Password Generator")
-window.config(padx=50, pady=50)
+root = Tk()
+root_icon = ImageTk.PhotoImage(file='assets/digital-key.png')
+root.iconphoto(False, root_icon)
+root.title("Password Generator")
+root.config(padx=50, pady=50)
 
 # Logo
 canvas = Canvas(height=200, width=200)
-logo_img = PhotoImage(file="logo.png")
+logo_img = PhotoImage(file="assets/logo.png")
 canvas.create_image(100, 100, image=logo_img)
 canvas.grid(row=0, column=1)
 
@@ -117,5 +120,4 @@ add_button.grid(row=4, column=1, columnspan=2)
 search_button = Button(text="Search", width=5, command=find_password)
 search_button.grid(row=1, column=2)
 
-
-window.mainloop()
+root.mainloop()
