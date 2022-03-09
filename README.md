@@ -6,4 +6,14 @@ It allows us to search if an account does exist or not by clicking on the Search
 
 I need testing & feedback with the executable file!
 
+If you don't trust this executable but want to try it out anyway you can run the python file yourself:  
+
+1) Install python, see how in:  [https://www.python.org/downloads/]
+
+2) Open the folder with the cmd and type: **pip install pyperclip**
+
+3) Run it
+
+This is how it looks:
+
 ![This is an image](https://github.com/Geloon/Password-Generator-Saver/blob/master/sample.png?raw=true)
