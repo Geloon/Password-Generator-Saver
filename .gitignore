@@ -23,5 +23,7 @@ env/
 Thumbs.db
 
 # IMPORTANT: Do NOT store tokens or secrets in tracked files.
-# If you need to run the notification scripts, export a token in your shell
-# session and run the scripts (see POST_PURGE.md for safe instructions).
+# If you need to run GitHub API commands, set `GITHUB_TOKEN` in your shell temporarily and
+# do NOT commit it. Example (run locally, do not commit):
+#
+#   # set GITHUB_TOKEN in your shell (do not commit it) and run API commands locally
