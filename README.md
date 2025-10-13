@@ -28,6 +28,11 @@ Security & running notes
 - You can choose to store the master password in the system keyring (Windows Credential Manager, macOS Keychain, or Linux Secret Service). This is recommended to avoid retyping it every time.
 - The app no longer commits `data.json` or sensitive files; make sure not to commit your own exported `data.json`.
 
+Important security note
+-----------------------
+We recently removed sensitive files from the repository history. If you cloned this repo before the purge, follow the instructions in `POST_PURGE.md` to resync safely.
+
+
 Development
 -----------
 Run tests with:
