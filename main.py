@@ -13,6 +13,7 @@ import pathlib
 from cryptography.hazmat.primitives import hashes
 from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
 from cryptography.fernet import Fernet
+import keyring
 
 # Files
 JSON_FILE = "data.json"
@@ -50,21 +51,65 @@ def ask_enable_encryption():
         ENCRYPT = False
         return
 
-    # Ask for master password
+    # Offer to use system keyring
+    use_keyring = mb.askyesno(
+        "Keyring", "Store master password in system keyring? (recommended)")
+    if use_keyring:
+        stored = keyring.get_password("password-generator-saver", "master")
+        if stored:
+            # Ask to reuse stored or set a new one
+            reuse = mb.askyesno(
+                "Keyring", "A master password is stored. Use it?")
+            if reuse:
+                try:
+                    FERNET = derive_fernet_from_password(stored)
+                    ENCRYPT = True
+                    mb.showinfo(
+                        "OK", "Encryption enabled using keyring-stored master password.")
+                    return
+                except Exception as e:
+                    mb.showerror(
+                        "Error", f"Failed to initialize encryption: {e}")
+        # No stored password or user wants to set new
+        pw = simpledialog.askstring(
+            "Master password", "Set master password:", show="*")
+        if not pw:
+            mb.showinfo("Info", "Encryption disabled (no password provided).")
+            ENCRYPT = False
+            return
+        pw_confirm = simpledialog.askstring(
+            "Confirm", "Confirm master password:", show="*")
+        if pw != pw_confirm:
+            mb.showerror(
+                "Error", "Passwords do not match. Encryption disabled.")
+            ENCRYPT = False
+            return
+        try:
+            FERNET = derive_fernet_from_password(pw)
+            ENCRYPT = True
+            # store in keyring if user chose
+            keyring.set_password("password-generator-saver", "master", pw)
+            mb.showinfo(
+                "OK", "Encryption enabled and master password saved to keyring.")
+            return
+        except Exception as e:
+            mb.showerror("Error", f"Failed to enable encryption: {e}")
+            ENCRYPT = False
+            return
+
+    # Fallback: not using keyring
     pw = simpledialog.askstring(
         "Master password", "Set master password:", show="*")
     if not pw:
         mb.showinfo("Info", "Encryption disabled (no password provided).")
         ENCRYPT = False
         return
-
     pw_confirm = simpledialog.askstring(
         "Confirm", "Confirm master password:", show="*")
     if pw != pw_confirm:
         mb.showerror("Error", "Passwords do not match. Encryption disabled.")
         ENCRYPT = False
         return
-
     try:
         FERNET = derive_fernet_from_password(pw)
         ENCRYPT = True
