@@ -22,5 +22,6 @@ env/
 .DS_Store
 Thumbs.db
 
-git rm --cached [main.exe](http://_vscodecontentref_/44)
-git commit -m "Remove built executable from repo"
+# IMPORTANT: Do NOT store tokens or secrets in tracked files.
+# If you need to run the notification scripts, export a token in your shell
+# session and run the scripts (see POST_PURGE.md for safe instructions).
