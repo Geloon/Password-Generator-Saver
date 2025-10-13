@@ -1,0 +1,26 @@
+__pycache__/
+*.py[cod]
+# Runtime data that may contain secrets
+data.json
+.env
+data.enc
+data.salt
+
+# Executables and build artifacts
+*.exe
+dist/
+build/
+
+# IDE/editor folders
+.vscode/
+
+# Python virtual env
+venv/
+env/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+git rm --cached [main.exe](http://_vscodecontentref_/44)
+git commit -m "Remove built executable from repo"
