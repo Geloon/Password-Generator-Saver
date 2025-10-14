@@ -26,4 +26,6 @@ scan-results/
 truffle-results.json
 all-objects.txt
 scan-report.txt
+# Ignore locally-used issue scripts (kept out of repo for security)
+scripts/create_issue*.sh
 
