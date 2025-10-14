@@ -21,9 +21,9 @@ env/
 # OS files
 .DS_Store
 Thumbs.db
+# Local scan artifacts
+scan-results/
+truffle-results.json
+all-objects.txt
+scan-report.txt
 
-# IMPORTANT: Do NOT store tokens or secrets in tracked files.
-# If you need to run GitHub API commands, set `GITHUB_TOKEN` in your shell temporarily and
-# do NOT commit it. Example (run locally, do not commit):
-#
-#   # set GITHUB_TOKEN in your shell (do not commit it) and run API commands locally

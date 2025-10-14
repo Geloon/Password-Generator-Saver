@@ -1,4 +1,4 @@
-Hola equipo,
+Hola.
 
 Se reescribió el historial del repositorio para eliminar archivos sensibles (por ejemplo `main.exe`).
 
@@ -15,6 +15,6 @@ git reset --hard origin/master
 
 3. Si tenéis forks públicos, considerad reclonar o reescribir vuestro fork.
 
-Si necesitáis ayuda, responded a este mensaje y os guiaré.
+Si necesitáis ayuda, responded a este mensaje y os ayudo.
 
 Gracias.

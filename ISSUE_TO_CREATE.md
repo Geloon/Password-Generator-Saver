@@ -3,7 +3,7 @@ Title: Repository history rewritten to remove sensitive files
 Body:
 Hola equipo,
 
-He reescribido el historial del repositorio para eliminar archivos sensibles (por ejemplo `main.exe`). El cambio ya se empujó al remoto y hay una etiqueta `purge-20251013` que marca el punto.
+He reescribido el historial del repositorio para eliminar archivos sensibles.
 
 Pasos que debéis tomar en vuestro clone local:
 
@@ -18,6 +18,6 @@ git reset --hard origin/master
 
 3. Si tenéis forks, considerad reclonarlos o reescribir vuestro fork.
 
-Si necesitáis ayuda, responded a este mensaje y os guiaré.
+Si necesitáis ayuda, responded a este mensaje y os ayudaré.
 
 Gracias.
