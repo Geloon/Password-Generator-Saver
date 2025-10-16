@@ -1,10 +1,9 @@
 __pycache__/
 *.py[cod]
-# Runtime data that may contain secrets
-data.json
+# Runtime data that may contain secrets (per-user data directory)
+# The application stores data in the user's home folder: ~/.password-generator-saver/
+.password-generator-saver/
 .env
-data.enc
-data.salt
 
 # Executables and build artifacts
 *.exe
@@ -29,3 +28,5 @@ scan-report.txt
 # Ignore locally-used issue scripts (kept out of repo for security)
 scripts/create_issue*.sh
 
+.venv/
+Password-Generator-Saver.bak/
