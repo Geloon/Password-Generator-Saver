@@ -200,14 +200,25 @@ def ask_enable_encryption():
 
 def load_data_encrypted():
     try:
-        with open(ENC_FILE, "rb") as f:
+        # Prefer the per-user ENC_FILE, but fall back to a local data.enc in CWD
+        target = ENC_FILE
+        if not target.exists():
+            alt = Path.cwd() / "data.enc"
+            if alt.exists():
+                target = alt
+
+        with open(target, "rb") as f:
             token = f.read()
         data_json = FERNET.decrypt(token).decode()
         return json.loads(data_json)
     except FileNotFoundError:
         return {}
     except Exception as e:
-        mb.showerror("Error", f"Unable to decrypt data: {e}")
+        # GUI may not be available in tests; avoid raising
+        try:
+            mb.showerror("Error", f"Unable to decrypt data: {e}")
+        except Exception:
+            pass
         return None
 
 
